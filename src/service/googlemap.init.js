@@ -196,6 +196,7 @@ function centerTo (LatLng) {
 function initAutoComplete(){
 	autocomplete = new MapClass.places.Autocomplete(document.getElementById('pac-input'));
 	autocomplete.addListener('place_changed', () => {
+		if (!autocomplete.getPlace().geometry) return
 		let targetGeo = autocomplete.getPlace().geometry.location;
 		searchPOIaround({position: targetGeo});
 	})
