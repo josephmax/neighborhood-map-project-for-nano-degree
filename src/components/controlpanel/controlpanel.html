@@ -1,0 +1,44 @@
+<div class="btn-group-vertical lg_nav" style="width:100%; margin-bottom:10px;">
+  <button type="button" class="btn btn-default" data-bind="click: relocate">Relocate
+		<i class="glyphicon glyphicon-record pull-right" data-bind="css: isRelocating"></i>
+	</button>
+  <button type="button" class="btn btn-default" data-bind="click: reseach">Search Near Me
+		<i class="glyphicon glyphicon-refresh pull-right" data-bind="css: isReseaching"></i>
+	</button>
+  <button type="button" class="btn btn-default" data-bind="click: expandToSeeAll">Expand
+		<i class="glyphicon glyphicon-resize-full pull-right"></i>
+	</button>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle btn_caret"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			data-bind="{text: filterLiteral}">
+    </button>
+    <ul class="dropdown-menu">
+			<li data-bind="{click: setFilter.bind($data, '0')}"><a href="#">No Filter</a></li>
+      <li data-bind="{click: setFilter.bind($data, '1')}"><a href="#">Rating over 3</a></li>
+      <li data-bind="{click: setFilter.bind($data, '2')}"><a href="#">Rating over 4</a></li>
+    </ul>
+  </div>
+</div>
+<div class="btn-group btn-group-flex sm_nav" style="width:100%; margin-bottom:10px;">
+  <button type="button" class="btn btn-default" data-bind="click: relocate">
+		<i class="glyphicon glyphicon-record pull-right" data-bind="css: isRelocating"></i>
+	</button>
+  <button type="button" class="btn btn-default" data-bind="click: reseach">
+		<i class="glyphicon glyphicon-refresh pull-right" data-bind="css: isReseaching"></i>
+	</button>
+  <button type="button" class="btn btn-default" data-bind="click: expandToSeeAll">
+		<i class="glyphicon glyphicon-resize-full pull-right"></i>
+	</button>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			data-bind="{text: filterLiteral}">
+    </button>
+    <ul class="dropdown-menu">
+			<li data-bind="{click: setFilter.bind($data, '0')}"><a href="#">No Filter</a></li>
+      <li data-bind="{click: setFilter.bind($data, '1')}"><a href="#">Rating over 3</a></li>
+      <li data-bind="{click: setFilter.bind($data, '2')}"><a href="#">Rating over 4</a></li>
+    </ul>
+  </div>
+</div>

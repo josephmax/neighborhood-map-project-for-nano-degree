@@ -1,0 +1,181 @@
+body {
+	color: black;
+	background-color: #777;
+}
+
+.navbar-fixed-top {
+	border: 0;
+	z-index: 1;
+}
+
+app-sidebar a {
+	color: #01B3E3;
+}
+
+.hover_to_show_icon i{
+	opacity: 0;
+	transition: .5s ease;
+}
+
+.point_cursor {
+	cursor: pointer;
+}
+
+.hover_to_show_icon:hover i{
+	opacity: 1;
+}
+
+.btn_caret {
+	position: relative;
+}
+
+.btn_caret:after{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-top: 5px solid #333;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+}
+/*
+ * Sidebar
+ */
+
+.result-item-box i.fav {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	color: tomato;
+}
+/* Hide for mobile, show later */
+
+.sidebar {
+	display: none;
+}
+.btn-group-flex {
+	display: flex;
+}
+.lg_nav {
+	display: block;
+}
+.sm_nav {
+	display: none;
+}
+@media (min-width: 768px) {
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: #101010;
+		border-right: 1px solid #eee;
+	}
+}
+
+
+/* Sidebar navigation */
+
+.nav-sidebar {
+	margin-right: -21px;
+	/* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+
+.nav-sidebar>li>a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.nav-sidebar>.active>a,
+.nav-sidebar>.active>a:hover,
+.nav-sidebar>.active>a:focus {
+	color: #fff;
+	background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+	padding: 20px;
+}
+
+@media (min-width: 768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
+.mainview {
+  margin-top: 51px;
+	padding: 0;
+}
+
+.fill {
+	margin: 0 -20px 20px;
+}
+
+#mainview {
+	/*Standard */
+	height: calc(100vh - 51px);
+	/*Firefox*/
+	height: -moz-calc(100vh - 51px);
+	/*chrome safari*/
+	height: -webkit-calc(100vh - 51px);
+}
+
+.rotating {
+	animation: rotating 2s linear infinite;
+}
+.bouncing {
+	animation: bouncing 2s ease infinite;
+}
+
+@keyframes rotating {
+	from {transform: rotate(0deg)}
+	to {transform: rotate(360deg)}
+}
+
+@keyframes bouncing {
+	0%,100% {transform: scale(1)}
+	50% {transform: scale(1.3)}
+}
+
+@media screen and (max-width: 768px) {
+	.sidebar {
+		position: fixed;
+    bottom: 0;
+    left: 0;
+		width: 100%;
+		height: 200px;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow: scroll;
+    background-color: #101010;
+    border-right: 1px solid #eee;
+	}
+	.lg_nav {
+		display: none;
+	}
+	.sm_nav {
+		display: flex;
+	}
+}

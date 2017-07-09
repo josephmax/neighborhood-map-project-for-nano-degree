@@ -1,0 +1,20 @@
+<div class="panel-group" role="tablist">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+        <h4 class="panel-title">
+          <a class="" role="button" data-toggle="collapse" data-bind="click: toggleFoldIcon" href="#collapseListGroup1" aria-expanded="true" aria-controls="collapseListGroup1">
+            My Fav Places
+						<i class="glyphicon pull-right" data-bind="css: foldClass"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+        <ul class="list-group" data-bind="foreach: fav">
+          <li class="list-group-item hover_to_show_icon" data-bind="click: $parent.renderPlaceIdToMarker">
+						<a data-bind="text: name"></a>
+						<i class="glyphicon glyphicon-remove pull-right point_cursor" data-bind="click: $parent.delFav, clickBubble: false"></i>
+					</li>
+        </ul>
+      </div>
+    </div>
+  </div>

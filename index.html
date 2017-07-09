@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <script src="./dist/app.bundle.js" charset="utf-8"></script>
+</head>
+<body cz-shortcut-listen="true">
+    <app-header class="col-md-12 col-lg-12 col-sm-12" params="subid: '900423599'"></app-header>
+    <div class="container-fluid">
+      <div class="row">
+        <app-sidebar class="col-sm-3 col-md-2 sidebar"></app-sidebar>
+        <app-mainview class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 mainview"></app-mainview>
+      </div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyAyNCOcM2t3CasEhJE1D5AKQ41fzT9xcsU&v=3&callback=mapInit"></script>
+</body>
+</html>

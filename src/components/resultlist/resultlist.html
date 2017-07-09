@@ -1,0 +1,7 @@
+<ul class="nav nav-sidebar" data-bind="foreach: results">
+	<li class="result-item-box">
+		<a href="#" data-bind="text: name, click: $parent.centerAndFocus.bind($data, $data, $index)">
+		</a>
+		<i class="glyphicon fav" data-bind="css: $parent.FavClass($data), click: $parent.addFav"></i>
+	</li>
+</ul>
