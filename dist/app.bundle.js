@@ -27429,11 +27429,11 @@
 	 */
 	var filterMarkers = exports.filterMarkers = function filterMarkers(filter) {
 		if (!map) return;
-		placeMarkers.map(function (item, index) {
-			if (!filter(_context.context.resultList()[index])) {
-				item.setMap(null);
+		_context.context.resultList().map(function (item, index) {
+			if (!filter(item)) {
+				placeMarkers[index].setMap(null);
 			} else {
-				item.setMap(map);
+				placeMarkers[index].setMap(map);
 			}
 		});
 	};
@@ -27453,6 +27453,9 @@
 		initAutoComplete();
 		setMyGeoMarkerMarker(myGeoLocation);
 		searchPOIaround({});
+		MapClass.event.addDomListener(window, 'resize', function () {
+			expandToSeeAllMarkers();
+		});
 	};
 
 	function setMyGeoMarkerMarker(position) {
@@ -27490,7 +27493,6 @@
 	}
 
 	function setMarkerFocus(place, marker) {
-		if (_context.context.filter() !== '0') _context.context.filter('0');
 		marker.setMap(map);
 		marker.setAnimation(MapClass.Animation.BOUNCE);
 		infoWindow.setContent(htmlContent(place));
@@ -27537,9 +27539,14 @@
 
 	function addMarkerListener(item, index, results) {
 		item.addListener('click', function () {
+			var _this = this;
+
 			if (!currentPlace || currentPlace.id !== results[index].id) {
 				clearAnimation(placeMarkers);
 				this.setAnimation(MapClass.Animation.BOUNCE);
+				setTimeout(function () {
+					_this.setAnimation(null);
+				}, 750);
 				infoWindow.setContent(htmlContent(results[index]));
 				(0, _nyTimes.fetchNYTInfo)(results[index]).then(function (res) {
 					infoWindow.setContent(htmlContent(results[index], res));
@@ -28232,7 +28239,10 @@
 		this.componentName = _knockout2.default.observable("resultlist");
 		this.context = _context.context;
 		this.visible = _knockout2.default.observable(true);
-		this.results = _context.context.resultList;
+		this.results = _knockout2.default.computed(function () {
+			var filterRaw = _context.context.filter();
+			return _context.context.resultList().filter(_context.FILTER_HANDLER[filterRaw]);
+		});
 		this.centerAndFocus = function (target, index) {
 			(0, _googlemap.centerAndFocus)(target, index());
 		};

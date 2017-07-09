@@ -138,11 +138,11 @@ export const renderPlaceIdToMarker = (place) => {
  */
 export const filterMarkers = (filter) => {
 	if (!map) return;
-	placeMarkers.map((item, index) => {
-		if (!filter(context.resultList()[index])) {
-			item.setMap(null);
+	context.resultList().map((item, index) => {
+		if (!filter(item)) {
+			placeMarkers[index].setMap(null);
 		} else {
-			item.setMap(map);
+			placeMarkers[index].setMap(map);
 		}
 	})
 }
@@ -162,6 +162,9 @@ function initMap() {
 		initAutoComplete();
 		setMyGeoMarkerMarker(myGeoLocation);
 		searchPOIaround({});
+		MapClass.event.addDomListener(window, 'resize', function() {
+			expandToSeeAllMarkers();
+		});
 };
 
 function setMyGeoMarkerMarker (position) {
@@ -199,7 +202,6 @@ function initAutoComplete(){
 }
 
 function setMarkerFocus (place, marker) {
-	if (context.filter() !== '0') context.filter('0');
 	marker.setMap(map);
 	marker.setAnimation(MapClass.Animation.BOUNCE);
 		infoWindow.setContent(htmlContent(place));
@@ -241,6 +243,9 @@ function addMarkerListener(item, index, results) {
 				if (!currentPlace || currentPlace.id !== results[index].id) {
 						clearAnimation(placeMarkers);
 						this.setAnimation(MapClass.Animation.BOUNCE);
+						setTimeout(() => {
+							this.setAnimation(null)
+						}, 750)
 						infoWindow.setContent(htmlContent(results[index]));
 						fetchNYTInfo(results[index]).then((res) => {
 							infoWindow.setContent(htmlContent(results[index], res))

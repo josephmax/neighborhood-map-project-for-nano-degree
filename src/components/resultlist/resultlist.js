@@ -1,5 +1,5 @@
 "use strict";
-import {context} from '../../models/context.js';
+import {context, FILTER_HANDLER} from '../../models/context.js';
 import ko from 'knockout';
 import {centerAndFocus, setMarkerFocus} from '../../service/googlemap.init';
 import store from '../../utils/localStorage';
@@ -10,7 +10,10 @@ class resultListModel {
     this.componentName = ko.observable("resultlist");
     this.context = context;
     this.visible = ko.observable(true);
-		this.results = context.resultList;
+		this.results = ko.computed(() => {
+			let filterRaw = context.filter();
+			return context.resultList().filter(FILTER_HANDLER[filterRaw]);
+		});
 		this.centerAndFocus = (target, index) => {
 			centerAndFocus(target, index());
 		};
