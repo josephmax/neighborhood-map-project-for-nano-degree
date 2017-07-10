@@ -29,5 +29,5 @@ $(document).ready(function(){
 });
 
 window.googleMapLoadingTimeOut = setTimeout(() => {
-	document.write('Oops, seems some error occured on google map loading, please try again later');
+	$('#mainview').html('Oops, seems some error occured on google map loading, please try again later');
 }, 15000);

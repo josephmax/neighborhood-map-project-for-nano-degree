@@ -91,7 +91,7 @@
 	});
 
 	window.googleMapLoadingTimeOut = setTimeout(function () {
-		document.write('Oops, seems some error occured on google map loading, please try again later');
+		(0, _jquery2.default)('#mainview').html('Oops, seems some error occured on google map loading, please try again later');
 	}, 15000);
 
 /***/ }),
