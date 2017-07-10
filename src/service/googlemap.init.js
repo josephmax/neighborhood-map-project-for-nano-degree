@@ -32,6 +32,7 @@ let autocomplete;
 
 // init entry
 export default() => {
+		clearTimeout(window.googleMapLoadingTimeOut);
 		MapClass = google.maps;
 		bounds = new MapClass.LatLngBounds();
 		infoWindow = new MapClass.InfoWindow();

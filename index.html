@@ -13,16 +13,7 @@
         <app-mainview class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 mainview"></app-mainview>
       </div>
     </div>
-		<script>
-			function googleMapErrorHandling() {
-				document.write('Oops, seems some error occured on google map loading, please try again later');
-			}
-		</script>
-    <script async defer onerror="googleMapErrorHandling()"
-		src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyAyNCOcM2t3CasEhJE1D5AKQ41fzT9xcsU&v=3&callback=mapInit" ></script>
-		<!--i would like google map script to be loaded asyncly before app.bundle.js,
-		and excuted after app.bundle.js to utilized the startup.
-		So it seems the error Handling function has to be seperated like above.-->
 		<script src="./dist/app.bundle.js" charset="utf-8"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyAyNCOcM2t3CasEhJE1D5AKQ41fzT9xcsU&v=3&callback=mapInit" ></script>
 </body>
 </html>

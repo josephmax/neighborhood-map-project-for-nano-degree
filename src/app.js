@@ -27,3 +27,7 @@ $(document).ready(function(){
 	//initate ko context;
     ko.applyBindings({});
 });
+
+window.googleMapLoadingTimeOut = setTimeout(() => {
+	document.write('Oops, seems some error occured on google map loading, please try again later');
+}, 15000);

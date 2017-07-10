@@ -86,9 +86,13 @@
 	// bind google script callback function name to window.
 	window.mapInit = _googlemap2.default;
 	(0, _jquery2.default)(document).ready(function () {
-	  //initate ko context;
-	  _knockout2.default.applyBindings({});
+		//initate ko context;
+		_knockout2.default.applyBindings({});
 	});
+
+	window.googleMapLoadingTimeOut = setTimeout(function () {
+		document.write('Oops, seems some error occured on google map loading, please try again later');
+	}, 15000);
 
 /***/ }),
 /* 1 */
@@ -27320,6 +27324,7 @@
 	// init entry
 
 	exports.default = function () {
+		clearTimeout(window.googleMapLoadingTimeOut);
 		MapClass = google.maps;
 		bounds = new MapClass.LatLngBounds();
 		infoWindow = new MapClass.InfoWindow();
@@ -27487,6 +27492,7 @@
 	function initAutoComplete() {
 		autocomplete = new MapClass.places.Autocomplete(document.getElementById('pac-input'));
 		autocomplete.addListener('place_changed', function () {
+			if (!autocomplete.getPlace().geometry) return;
 			var targetGeo = autocomplete.getPlace().geometry.location;
 			searchPOIaround({ position: targetGeo });
 		});
