@@ -123,13 +123,13 @@ app-sidebar a {
 	margin-top: 0;
 }
 
-.mainview {
-  margin-top: 51px;
-	padding: 0;
-}
-
 .fill {
 	margin: 0 -20px 20px;
+}
+
+.mainview{
+	margin-top: 51px;
+	padding: 0;
 }
 
 #mainview {
@@ -171,6 +171,17 @@ app-sidebar a {
     overflow: scroll;
     background-color: #101010;
     border-right: 1px solid #eee;
+	}
+	.mainview{
+		padding: 0;
+	}
+	#mainview {
+		margin-top: 31px;
+		height: calc(100vh - 251px);
+		/*Firefox*/
+		height: -moz-calc(100vh - 251px);
+		/*chrome safari*/
+		height: -webkit-calc(100vh - 251px);
 	}
 	.lg_nav {
 		display: none;
